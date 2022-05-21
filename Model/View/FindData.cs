@@ -14,15 +14,17 @@ namespace View
 		// Конструктор
 		public FindData(string[] strings, double[] values)
 		{
-			if (strings.Length != 2)
+            //Проверяем верную ли размерность имеет массив строк поиска
+            if (strings.Length != 2)
 				throw new Exception("Размерность массива строк поиска неверна.");
-
+            //Проверяем верную ли размерность имеет массив значений поиска
 			if (values.Length != 4)
 				throw new Exception("Размерность массива значений поиска неверна.");
-
+            //По всем строкам поиска
 			for (int i = 0; i < 2; i++)
 			{
-				if (strings[i] == null)
+                //Проверяем непустоту сроки
+                if (strings[i] == null)
 					throw new Exception("Строка массива данных поиска не может быть " +
 						$"null (строка {i}).");
 				_strings[i] = strings[i];

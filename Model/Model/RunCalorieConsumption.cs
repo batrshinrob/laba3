@@ -42,7 +42,8 @@ namespace Model
 			}
 			set
 			{
-				if ((value < 0) || (value > Variants.Length))
+                //Проверяем находится ли индекс в допустимых пределах
+                if ((value < 0) || (value > Variants.Length))
 					throw new Exception(
 						"Выберете индекс варианта тренировки в пределах от 0 до " +
 						(Variants.Length - 1).ToString() + ".");
@@ -61,6 +62,7 @@ namespace Model
 			}
 			set
 			{
+                //Проверяем находится ли вес в допустимых пределах
 				Validator.Validate(value, 10, 500,
 					"Введите корректное значение веса занимающегося (от 10 до 500 кг).");
 				_mass = value;
@@ -78,7 +80,8 @@ namespace Model
 			}
 			set
 			{
-				Validator.Validate(value, 1, 600,
+                //Проверяем находится ли время занятия в допустимых пределах
+                Validator.Validate(value, 1, 600,
 					"Введите корректное значение времени занятий (от 1 до 600 мин.).");
 				_time = value;
 			}
@@ -89,7 +92,8 @@ namespace Model
 		{
 			get
 			{
-				return _time * _mass / 60 *
+                //Расчитываем потребление калорий
+                return _time * _mass / 60 *
 					Variants[_variantIndex].CaloriConsumptionRate;
 			}
 		}
